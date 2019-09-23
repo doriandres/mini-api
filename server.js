@@ -20,5 +20,10 @@ app.get('/users', async (req, res) => {
   res.json(users);
 })
 
+app.delete('/user/:id', async (req, res) => {
+  const done =  await User.destroy({ where: { id : req.params.id } });
+  res.json({ done });
+})
+
 
 app.listen(process.env.PORT || 8080);
